@@ -11,3 +11,5 @@ const Tags = db.define('tags', {
     allowNull: false
   }
 })
+
+module.exports = Tags

@@ -1,128 +1,128 @@
-const remSeed = [
+const tagsSeed = [
   {
     date: '2020-05-24',
-    remSleepTime: 4530
+    tagName: 'Coffee'
   },
   {
     date: '2020-05-25',
-    remSleepTime: 4710
+    tagName: 'Coffee'
   },
   {
     date: '2020-05-26',
-    remSleepTime: 2310
+    tagName: 'Coffee'
   },
   {
     date: '2020-05-27',
-    remSleepTime: 1110
+    tagName: 'Alcohol'
   },
   {
     date: '2020-05-28',
-    remSleepTime: 5190
+    tagName: 'Coffee'
   },
   {
     date: '2020-05-29',
-    remSleepTime: 2280
+    tagName: 'Coffee'
   },
   {
     date: '2020-05-30',
-    remSleepTime: 8610
+    tagName: 'Exercise'
   },
   {
     date: '2020-05-31',
-    remSleepTime: 2490
+    tagName: 'Coffee'
   },
   {
     date: '2020-06-01',
-    remSleepTime: 4740
+    tagName: 'Coffee'
   },
   {
     date: '2020-06-02',
-    remSleepTime: 6300
+    tagName: 'Exercise'
   },
   {
     date: '2020-06-03',
-    remSleepTime: 1860
+    tagName: 'Alcohol'
   },
   {
     date: '2020-06-04',
-    remSleepTime: 6030
+    tagName: 'Exercise'
   },
   {
     date: '2020-06-05',
-    remSleepTime: 6000
+    tagName: 'Exercise'
   },
   {
     date: '2020-06-06',
-    remSleepTime: 6840
+    tagName: 'Exercise'
   },
   {
     date: '2020-06-07',
-    remSleepTime: 6270
+    tagName: 'Exercise'
   },
   {
     date: '2020-06-08',
-    remSleepTime: 6630
+    tagName: 'Exercise'
   },
   {
     date: '2020-06-09',
-    remSleepTime: 7320
+    tagName: 'Exercise'
   },
   {
     date: '2020-06-10',
-    remSleepTime: 3960
+    tagName: 'Coffee'
   },
   {
     date: '2020-06-11',
-    remSleepTime: 6540
+    tagName: 'Exercise'
   },
   {
     date: '2020-06-12',
-    remSleepTime: 5640
+    tagName: 'Coffee'
   },
   {
     date: '2020-06-13',
-    remSleepTime: 7620
+    tagName: 'Exercise'
   },
   {
     date: '2020-06-15',
-    remSleepTime: 4200
+    tagName: 'Coffee'
   },
   {
     date: '2020-06-16',
-    remSleepTime: 3930
+    tagName: 'Coffee'
   },
   {
     date: '2020-06-17',
-    remSleepTime: 3870
+    tagName: 'Coffee'
   },
   {
     date: '2020-06-18',
-    remSleepTime: 5400
+    tagName: 'Coffee'
   },
   {
     date: '2020-06-19',
-    remSleepTime: 5040
+    tagName: 'Coffee'
   },
   {
     date: '2020-06-20',
-    remSleepTime: 3510
+    tagName: 'Coffee'
   },
   {
     date: '2020-06-21',
-    remSleepTime: 6600
+    tagName: 'Exercise'
   },
   {
     date: '2020-06-22',
-    remSleepTime: 4140
+    tagName: 'Coffee'
   },
   {
     date: '2020-06-23',
-    remSleepTime: 4020
+    tagName: 'Coffee'
   },
   {
     date: '2020-06-24',
-    remSleepTime: 2880
+    tagName: 'Coffee'
   }
 ]
 
-module.exports = remSeed
+module.exports = tagsSeed

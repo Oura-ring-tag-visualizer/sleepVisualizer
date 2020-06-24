@@ -15,6 +15,7 @@ const Tags = require('./tags')
  * for example, we can say: const {User} = require('../db/models')
  * instead of: const User = require('../db/models/user')
  */
+
 Rem.hasMany(Tags)
 Tags.belongsTo(Rem)
 
