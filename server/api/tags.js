@@ -2,16 +2,20 @@ const router = require('express').Router()
 const {Tags, Rem} = require('../db/models')
 module.exports = router
 
-router.get('/', async (req, res, next) => {
+router.get('/:tagName', async (req, res, next) => {
   try {
-    const dates = await findAll({
+    const dates = await Tags.findAll({
       where: {
-        tagNames: req.body.tagNames
+        tagNames: req.params.tagName
       },
-      include: {
-        model: Rem
-      }
+      include: [
+        {
+          model: Rem,
+          attributes: ['remSleepTime']
+        }
+      ]
     })
+    console.log(dates)
     res.json(dates)
   } catch (err) {
     next(err)

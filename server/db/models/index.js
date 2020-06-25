@@ -16,11 +16,7 @@ const Tags = require('./tags')
  * instead of: const User = require('../db/models/user')
  */
 
-Rem.hasMany(Tags)
-Tags.belongsTo(Rem)
-
 module.exports = {
   User,
-  Rem,
   Tags
 }
