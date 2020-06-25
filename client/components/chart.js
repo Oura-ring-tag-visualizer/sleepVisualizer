@@ -1,14 +1,21 @@
 import React from 'react'
+import {fetchAllDates, fetchTag} from '../store/tags'
+import {connect} from 'react-redux'
 
-const Graph = () => {
-  return (
-    <div>
-      <h1>Graph</h1>
-    </div>
-  )
+class Chart extends React.Component() {
+  componentDidMount() {
+    this.props.fetchTag(tagName)
+  }
+  render() {
+    return <div />
+  }
 }
+const mapDispatchToProps = dispatch => ({
+  fetchDates: () => dispatch(fetchDates()),
+  fetchTag: tagName => dispatch(fetchTag(tagName))
+})
 
-export default Graph
+export default connect(null, mapDispatchToProps)(Chart)
 
 // import React, {Component} from 'react'
 // import {Bar, Line, Pie} from 'react-chartjs-2'
