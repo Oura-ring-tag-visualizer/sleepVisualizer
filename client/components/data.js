@@ -6,7 +6,7 @@ export const Data = () => {
     <div>
       <div>Data</div>
       <div>
-        <Chart />
+        <Graph />
       </div>
     </div>
   )
