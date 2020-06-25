@@ -4,6 +4,11 @@ import axios from 'axios'
 const GET_TAGS = 'GET_TAGS'
 
 // ACTION CREATORS
+
+const getDates = () => ({
+  type: GET_TAGS
+})
+
 const getTags = tag => ({
   type: GET_TAGS,
   tag
