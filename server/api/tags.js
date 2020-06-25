@@ -4,25 +4,19 @@ module.exports = router
 
 router.get('/:tagName', async (req, res, next) => {
   try {
-    const tagDate = await Tags.findAll({
+    const dates = await Tags.findAll({
       where: {
-        tagNames: req.params.tagNames
-      }
-    }).spread(found => {
-      return Rem.findAll({
-        where: {
-          date: found.date
-        }
-      })
-    })
-    const findDate = await Rem.findAll({
-      where: {
-        date: tagDate.date
+        tagNames: req.params.tagName
       },
-      include: {all: true, nested: true}
+      include: [
+        {
+          model: Rem,
+          attributes: ['remSleepTime']
+        }
+      ]
     })
-
-    res.json(findDate)
+    console.log(dates)
+    res.json(dates)
   } catch (err) {
     next(err)
   }

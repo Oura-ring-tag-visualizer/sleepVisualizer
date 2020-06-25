@@ -1,8 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, Tags, Rem} = require('../server/db/models')
-const remSeed = require('../remSeed')
+const {User, Tags} = require('../server/db/models')
 const tagSeed = require('../tagsSeed')
 
 async function seed() {
@@ -10,11 +9,6 @@ async function seed() {
   console.log('db synced!')
 
   console.log()
-  const remSleepDays = await Promise.all(
-    remSeed.map(rem => {
-      return Rem.create(rem)
-    })
-  )
 
   const tagDays = await Promise.all(
     tagSeed.map(tags => {
@@ -27,7 +21,6 @@ async function seed() {
     User.create({email: 'murphy@email.com', password: '123'})
   ])
 
-  console.log(`seeded ${remSleepDays.length} rem data dates`)
   console.log(`seeded ${tagDays.length} tags data dates`)
   console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
