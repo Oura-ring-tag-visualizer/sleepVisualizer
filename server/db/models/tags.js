@@ -6,9 +6,8 @@ const Tags = db.define('tags', {
     type: Sequelize.DATEONLY,
     allowNull: false
   },
-  tagName: {
-    type: Sequelize.STRING,
-    allowNull: false
+  tagNames: {
+    type: Sequelize.ARRAY(Sequelize.STRING)
   }
 })
 
