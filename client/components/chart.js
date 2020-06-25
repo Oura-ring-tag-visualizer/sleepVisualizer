@@ -6,10 +6,13 @@ class Chart extends Component {
     super()
     this.state = {
       chartData: {
-        labels: ['06/23/25'],
+        //dates will change based on tagname
+        labels: ['06/23/20', '06/24/20', '06/25/20', '06/26/20'],
         datasets: [
           {
-            label: ['coffee', 'alcohol', 'exercise'],
+            // tag, this will change based on tagname
+            label: ['coffee'],
+            //data will change based on tag name
             data: [4530, 5610, 8236, 3124, 9323, 3213, 3123],
             backgroundColor: [
               'rgba(255, 99, 132, 0.6)',
@@ -30,6 +33,11 @@ class Chart extends Component {
       <div>
         <div className="chart">
           <Line data={this.state.chartData} options={{}} />
+        </div>
+        <div>
+          <button type="button">Coffee</button>
+          <button type="button">Alcohol</button>
+          <button type="button">Exercise</button>
         </div>
       </div>
     )
