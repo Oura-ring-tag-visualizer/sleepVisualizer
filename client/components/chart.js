@@ -2,20 +2,27 @@ import React from 'react'
 import {fetchAllDates, fetchTag} from '../store/tags'
 import {connect} from 'react-redux'
 
-class Chart extends React.Component() {
+class Chart extends React.Component {
   componentDidMount() {
-    this.props.fetchTag(tagName)
+    this.props.fetchTagData('coffee')
   }
+
   render() {
+    console.log('props:', this.props)
     return <div />
   }
 }
-const mapDispatchToProps = dispatch => ({
-  fetchDates: () => dispatch(fetchDates()),
-  fetchTag: tagName => dispatch(fetchTag(tagName))
+
+const mapStatetoProps = state => ({
+  tagName: state.tagName
 })
 
-export default connect(null, mapDispatchToProps)(Chart)
+const mapDispatchToProps = dispatch => ({
+  fetchDates: () => dispatch(fetchAllDates()),
+  fetchTagData: tagName => dispatch(fetchTag(tagName))
+})
+
+export default connect(mapStatetoProps, mapDispatchToProps)(Chart)
 
 // import React, {Component} from 'react'
 // import {Bar, Line, Pie} from 'react-chartjs-2'
