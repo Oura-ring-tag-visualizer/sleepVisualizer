@@ -1,15 +1,30 @@
 import React from 'react'
 import {fetchAllDates, fetchTag} from '../store/tags'
 import {connect} from 'react-redux'
+import ResponsiveContainer from 'recharts/lib/component/ResponsiveContainer'
+import LineChart from 'recharts/lib/chart/LineChart'
+import Line from 'recharts/lib/cartesian/Line'
+import XAxis from 'recharts/lib/cartesian/XAxis'
+import YAxis from 'recharts/lib/cartesian/YAxis'
+import CartesianGrid from 'recharts/lib/cartesian/CartesianGrid'
+import Tooltip from 'recharts/lib/component/Tooltip'
+import Legend from 'recharts/lib/component/Legend'
 
 class Chart extends React.Component {
   componentDidMount() {
     this.props.fetchTagData('coffee')
   }
-
   render() {
-    console.log('props:', this.props)
-    return <div />
+    return (
+      <div>hi</div>
+      // <LineChart width={500} height={300} data={tag}>
+      //   <XAxis dataKey="name" />
+      //   <YAxis />
+      //   <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+      //   <Line type="monotone" dataKey='' stroke="#8884d8" />
+      //   <Line type="monotone" dataKey="pv" stroke="#82ca9d" />
+      // </LineChart>
+    )
   }
 }
 

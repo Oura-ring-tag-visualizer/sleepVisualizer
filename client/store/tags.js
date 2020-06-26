@@ -38,16 +38,14 @@ export const fetchTag = tagName => {
   }
 }
 
-const initialState = {
-  tagName: ''
-}
+const initialState = []
 
 // REDUCER
 
 export default function tagReducer(state = initialState, action) {
   switch (action.type) {
     case GET_TAGS:
-      return {...state, tagName: action.tag}
+      return [...state, action.state.tag]
     default:
       return state
   }
