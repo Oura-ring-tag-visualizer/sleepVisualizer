@@ -15,13 +15,27 @@ class Data extends React.Component {
     this.props.fetchDates()
     this.props.fetchTagData('coffee')
   }
-
   render() {
-    console.log('props:', this.props)
+    console.log(this.props)
     return (
       <div>
-        <div>Data</div>
-        <div>{/* <Chart {...this.props}/> */}</div>
+        <div>
+          <ResponsiveContainer width="90%" height={500}>
+            <LineChart data={this.props.dates}>
+              <XAxis dataKey="date" stroke="black" />
+              <YAxis stroke="black" dataKey="remSleepTime" />
+              <CartesianGrid vertical={false} strokeDasharray="3 3" />
+              <Tooltip />
+              <Legend />
+              <Line
+                type="monotone"
+                dataKey="tagNames"
+                stroke="black"
+                activeDot={{r: 8}}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
       </div>
     )
   }
