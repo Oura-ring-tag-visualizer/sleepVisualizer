@@ -16,12 +16,29 @@ class Data extends React.Component {
     this.props.fetchTagData('coffee')
   }
   render() {
-    console.log(this.props)
+    const datesOnly = this.props.dates.map(date => {
+      delete date.tagNames
+      delete date.createdAt
+      delete date.updatedAt
+      return date
+    })
+
+    // const remSleepTimeAverage = this.props.tags.map(tag => {
+    //   delete date.tagNames
+    //   delete date.createdAt
+    //   delete date.updatedAt
+    //   return (
+
+    //   )
+    // })
+
+    console.log('dates: ', datesOnly)
+    console.log('tagNameData:', this.props.tags)
     return (
       <div>
         <div>
-          <ResponsiveContainer width="90%" height={500}>
-            <LineChart data={this.props.dates}>
+          <ResponsiveContainer width="99%" height={500}>
+            <LineChart data={datesOnly}>
               <XAxis dataKey="date" stroke="black" />
               <YAxis stroke="black" dataKey="remSleepTime" />
               <CartesianGrid vertical={false} strokeDasharray="3 3" />
@@ -29,7 +46,7 @@ class Data extends React.Component {
               <Legend />
               <Line
                 type="monotone"
-                dataKey="tagNames"
+                dataKey="remSleepTime"
                 stroke="black"
                 activeDot={{r: 8}}
               />

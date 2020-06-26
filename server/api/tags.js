@@ -5,7 +5,9 @@ module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
-    const dates = await Tags.findAll()
+    const dates = await Tags.findAll({
+      order: [['date', 'ASC']]
+    })
     res.json(dates)
   } catch (err) {
     next(err)
