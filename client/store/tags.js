@@ -6,13 +6,14 @@ const GET_TAGS = 'GET_TAGS'
 
 // ACTION CREATORS
 
-const getDates = () => ({
-  type: GET_DATES
+const getDates = dates => ({
+  type: GET_DATES,
+  dates
 })
 
-const getTags = tag => ({
+const getTags = tags => ({
   type: GET_TAGS,
-  tag
+  tags
 })
 
 // THUNK CREATORS
@@ -38,14 +39,19 @@ export const fetchTag = tagName => {
   }
 }
 
-const initialState = []
+const initialState = {
+  tags: [],
+  dates: []
+}
 
 // REDUCER
 
 export default function tagReducer(state = initialState, action) {
   switch (action.type) {
     case GET_TAGS:
-      return [...state, action.state.tag]
+      return {...state, tags: action.tags}
+    case GET_DATES:
+      return {...state, dates: action.dates}
     default:
       return state
   }

@@ -1,43 +1,52 @@
-import React from 'react'
-import {fetchAllDates, fetchTag} from '../store/tags'
-import {connect} from 'react-redux'
-import ResponsiveContainer from 'recharts/lib/component/ResponsiveContainer'
-import LineChart from 'recharts/lib/chart/LineChart'
-import Line from 'recharts/lib/cartesian/Line'
-import XAxis from 'recharts/lib/cartesian/XAxis'
-import YAxis from 'recharts/lib/cartesian/YAxis'
-import CartesianGrid from 'recharts/lib/cartesian/CartesianGrid'
-import Tooltip from 'recharts/lib/component/Tooltip'
-import Legend from 'recharts/lib/component/Legend'
+// import React from 'react'
+// import {fetchAllDates, fetchTag} from '../store/tags'
+// import {connect} from 'react-redux'
+// import ResponsiveContainer from 'recharts/lib/component/ResponsiveContainer'
+// import LineChart from 'recharts/lib/chart/LineChart'
+// import Line from 'recharts/lib/cartesian/Line'
+// import XAxis from 'recharts/lib/cartesian/XAxis'
+// import YAxis from 'recharts/lib/cartesian/YAxis'
+// import CartesianGrid from 'recharts/lib/cartesian/CartesianGrid'
+// import Tooltip from 'recharts/lib/component/Tooltip'
+// import Legend from 'recharts/lib/component/Legend'
 
-class Chart extends React.Component {
-  componentDidMount() {
-    this.props.fetchTagData('coffee')
-  }
-  render() {
-    return (
-      <div>hi</div>
-      // <LineChart width={500} height={300} data={tag}>
-      //   <XAxis dataKey="name" />
-      //   <YAxis />
-      //   <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
-      //   <Line type="monotone" dataKey='' stroke="#8884d8" />
-      //   <Line type="monotone" dataKey="pv" stroke="#82ca9d" />
-      // </LineChart>
-    )
-  }
-}
+// export class Chart extends React.Component {
+//   componentDidMount= () => {
+//     this.props.fetchTagData('exercise')
+//     console.log(this.props)
+//   }
 
-const mapStatetoProps = state => ({
-  tagName: state.tagName
-})
+//   render() {
+//     const tags = this.props.tags
+//     console.log('props:', tags)
+//     return (
+//       <div>
+//         <div>hi</div>
+//         {/* <div>{tag[0].tagNames[0]}</div> */}
 
-const mapDispatchToProps = dispatch => ({
-  fetchDates: () => dispatch(fetchAllDates()),
-  fetchTagData: tagName => dispatch(fetchTag(tagName))
-})
+//       </div>
 
-export default connect(mapStatetoProps, mapDispatchToProps)(Chart)
+//       // <LineChart width={500} height={300} data={tag}>
+//       //   <XAxis dataKey="name" />
+//       //   <YAxis />
+//       //   <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+//       //   <Line type="monotone" dataKey='' stroke="#8884d8" />
+//       //   <Line type="monotone" dataKey="pv" stroke="#82ca9d" />
+//       // </LineChart>
+//     )
+//   }
+// }
+
+// const mapStatetoProps = state => ({
+//   tags: state.tags
+// })
+
+// const mapDispatchToProps = dispatch => ({
+//   fetchDates: () => dispatch(fetchAllDates()),
+//   fetchTagData: tagName => dispatch(fetchTag(tagName))
+// })
+
+// export default connect(mapStatetoProps, mapDispatchToProps)(Chart)
 
 // import React, {Component} from 'react'
 // import {Bar, Line, Pie} from 'react-chartjs-2'
