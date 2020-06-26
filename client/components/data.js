@@ -69,10 +69,6 @@ class Data extends React.Component {
               display: this.props.displayTitle,
               text: 'REM Sleep Time by Tag',
               fontSize: 25
-            },
-            legend: {
-              display: this.props.displayLegend,
-              position: this.props.legendPosition
             }
           }}
         />
