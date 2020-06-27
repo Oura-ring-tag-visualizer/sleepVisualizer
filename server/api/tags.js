@@ -10,8 +10,8 @@ router.get('/', async (req, res, next) => {
       order: [['date', 'ASC']]
     })
     res.json(dates)
-  } catch (err) {
-    next(err)
+  } catch (error) {
+    next(error)
   }
 })
 
@@ -26,8 +26,17 @@ router.get('/:tagName', async (req, res, next) => {
     })
     console.log(dates)
     res.json(dates)
-  } catch (err) {
-    next(err)
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.post('/', async (req, res, next) => {
+  try {
+    const newDate = await Tags.create(req.body)
+    res.status(201).json(newDate)
+  } catch (error) {
+    next(error)
   }
 })
 
