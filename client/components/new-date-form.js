@@ -1,6 +1,4 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import createNewDate from '../store/tags'
 
 export class NewDateForm extends React.Component {
   constructor() {
@@ -14,10 +12,14 @@ export class NewDateForm extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    this.props.createNewDate(this.state)
+    let dateForm = {}
+    dateForm.date = this.state.date
+    dateForm.tagNames = [this.state.tagNames]
+    dateForm.remSleepTime = this.state.remSleepTime
+    this.props.createNewDate(dateForm)
     this.setState({
       date: '',
-      tagNames: '',
+      tagNames: [],
       remSleepTime: 0
     })
   }
@@ -27,7 +29,6 @@ export class NewDateForm extends React.Component {
   }
 
   render() {
-    console.log('props:', this.props)
     const tagNames = this.state.tagNames
     return (
       <div>
@@ -52,8 +53,9 @@ export class NewDateForm extends React.Component {
 
           <label htmlFor="tagNames">Tag Names</label>
           <select
-            name="tagNames"
+            type="text"
             value={this.state.tagNames}
+            name="tagNames"
             onChange={this.handleChange}
           >
             <option value="coffee">Coffee</option>
@@ -62,11 +64,11 @@ export class NewDateForm extends React.Component {
           </select>
 
           <button
-            disable={
-              !this.state.date &&
-              !this.state.tagNames &&
-              !this.state.remSleepTime
-            }
+            // disable={
+            //   !this.state.date &&
+            //   !this.state.tagNames &&
+            //   !this.state.remSleepTime
+            // }
             type="submit"
           >
             Submit
@@ -76,13 +78,3 @@ export class NewDateForm extends React.Component {
     )
   }
 }
-
-const mapStatetoProps = state => ({
-  dates: state.tagReducer.dates
-})
-
-const mapDispatchToProps = dispatch => ({
-  createNewDate: newDate => dispatch(createNewDate(newDate))
-})
-
-export default connect(mapStatetoProps, mapDispatchToProps)(NewDateForm)
