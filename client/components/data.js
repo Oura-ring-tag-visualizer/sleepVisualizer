@@ -25,8 +25,19 @@ class Data extends React.Component {
       return date.remSleepTime
     })
 
-    console.log('datesOnly: ', datesOnly)
-    console.log('remOnly: ', remOnly)
+    const tagRemSleepTimeArray = this.props.tags.map(remTime => {
+      return Number(remTime.remSleepTime)
+    })
+
+    const tagRemSleepTimeSum = tagRemSleepTimeArray.reduce((a, b) => a + b, 0)
+
+    const tagRemSleepTimeAvg = tagRemSleepTimeSum / tagRemSleepTimeArray.length
+
+    const tagRemSleepHorizontalLine = Array(datesOnly.length).fill(
+      tagRemSleepTimeAvg
+    )
+
+    console.log('Tag Rem Sleep Average: ', tagRemSleepHorizontalLine)
 
     const chartData = {
       labels: datesOnly,
@@ -46,9 +57,9 @@ class Data extends React.Component {
         },
 
         {
-          label: ['Rem sleep'],
-          data: [1234, 3456, 2854, 9859, 1764],
-          backgroundColor: [
+          label: ['Coffee'],
+          data: tagRemSleepHorizontalLine,
+          borderColor: [
             'rgba(75,192,192,1)',
             'rgba(75,192,192,1)',
             'rgba(75,192,192,1)',
