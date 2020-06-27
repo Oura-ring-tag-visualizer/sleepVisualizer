@@ -68,7 +68,8 @@ class Data extends React.Component {
             title: {
               display: this.props.displayTitle,
               text: 'REM Sleep Time by Tag',
-              fontSize: 25
+              fontSize: 25,
+              spanGaps: true
             }
           }}
         />

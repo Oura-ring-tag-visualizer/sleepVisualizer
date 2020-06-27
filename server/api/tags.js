@@ -15,33 +15,13 @@ router.get('/', async (req, res, next) => {
   }
 })
 
-// router.get('/:tagName', async (req, res, next) => {
-//   try {
-//     const dates = await Tags.findAll({
-//       where: {
-//         tagNames: {
-//           [Op.contains]: [req.params.tagName]
-//         }
-//       }
-//     })
-//     console.log(dates)
-//     res.json(dates)
-//   } catch (err) {
-//     next(err)
-//   }
-// })
-
 router.get('/:tagName', async (req, res, next) => {
   try {
     const dates = await Tags.findAll({
       where: {
         tagNames: {
           [Op.contains]: [req.params.tagName]
-        },
-        attributes: [
-          'remSleepTime',
-          [sequelize.fn('AVG', sequelize.col('average')), 'avg']
-        ]
+        }
       }
     })
     console.log(dates)
@@ -50,3 +30,23 @@ router.get('/:tagName', async (req, res, next) => {
     next(err)
   }
 })
+
+// router.get('/:tagName', async (req, res, next) => {
+//   try {
+//     const dates = await Tags.findAll({
+//       where: {
+//         tagNames: {
+//           [Op.contains]: [req.params.tagName]
+//         },
+//         attributes: [
+//           'remSleepTime',
+//           [sequelize.fn('AVG', sequelize.col('average')), 'avg']
+//         ]
+//       }
+//     })
+//     console.log(dates)
+//     res.json(dates)
+//   } catch (err) {
+//     next(err)
+//   }
+// })

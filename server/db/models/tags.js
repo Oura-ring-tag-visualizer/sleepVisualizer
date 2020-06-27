@@ -10,7 +10,7 @@ const Tags = db.define('tags', {
     type: Sequelize.ARRAY(Sequelize.STRING)
   },
   remSleepTime: {
-    type: Sequelize.STRING
+    type: Sequelize.INTEGER
   }
 })
 
