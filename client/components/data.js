@@ -6,7 +6,6 @@ import {Line} from 'react-chartjs-2'
 class Data extends React.Component {
   componentDidMount = () => {
     this.props.fetchDates()
-    this.props.fetchTagData('coffee')
   }
 
   render() {
@@ -57,7 +56,7 @@ class Data extends React.Component {
         },
 
         {
-          label: ['Coffee'],
+          label: ['Tag'],
           data: tagRemSleepHorizontalLine,
           borderColor: [
             'rgba(75,192,192,1)',
@@ -84,6 +83,26 @@ class Data extends React.Component {
             }
           }}
         />
+        <div>
+          <button
+            type="button"
+            onClick={event => this.props.fetchTagData('coffee')}
+          >
+            Coffee
+          </button>
+          <button
+            type="button"
+            onClick={event => this.props.fetchTagData('alcohol')}
+          >
+            Alcohol
+          </button>
+          <button
+            type="button"
+            onClick={event => this.props.fetchTagData('exercise')}
+          >
+            Exercise
+          </button>
+        </div>
       </div>
     )
   }
