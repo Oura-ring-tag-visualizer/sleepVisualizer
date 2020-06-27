@@ -1,7 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchAllDates, fetchTag} from '../store/tags'
+import {fetchAllDates, fetchTag, createNewDate} from '../store/tags'
 import {Line} from 'react-chartjs-2'
+import {NewDateForm} from './new-date-form'
 
 class Data extends React.Component {
   componentDidMount = () => {
@@ -35,8 +36,6 @@ class Data extends React.Component {
     const tagRemSleepHorizontalLine = Array(datesOnly.length).fill(
       tagRemSleepTimeAvg
     )
-
-    console.log('Tag Rem Sleep Average: ', tagRemSleepHorizontalLine)
 
     const chartData = {
       labels: datesOnly,
@@ -103,6 +102,7 @@ class Data extends React.Component {
             Exercise
           </button>
         </div>
+        <NewDateForm {...this.props} />
       </div>
     )
   }
@@ -115,7 +115,8 @@ const mapStatetoProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchDates: () => dispatch(fetchAllDates()),
-  fetchTagData: tagName => dispatch(fetchTag(tagName))
+  fetchTagData: tagName => dispatch(fetchTag(tagName)),
+  createNewDate: newDate => dispatch(createNewDate(newDate))
 })
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Data)
