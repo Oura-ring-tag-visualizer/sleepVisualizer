@@ -8,12 +8,27 @@ import Data from './data'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
-    <h1>Sleep Visualizer</h1>
-    <nav>
-      <Link to="/home">Home</Link>
-      <Link to="/data">Data</Link>
-    </nav>
-    <hr />
+    <div className="navbar-fixed">
+      <nav className="black">
+        <div className="nav-wrapper">
+          <h4 href="/home" className="brand-logo center">
+            Sleep Visualizer
+          </h4>
+          <ul className="left hide-on-med-and-down">
+            <li className="tab">
+              <a target="_self" href="/home">
+                Home
+              </a>
+            </li>
+            <li className="tab">
+              <a target="_self" href="/data">
+                Data
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
   </div>
 )
 
