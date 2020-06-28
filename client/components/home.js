@@ -122,11 +122,11 @@ const Home = () => {
           <div className="container">
             <h2 className="white-text center">Meet the Creators</h2>
             <a href="https://www.linkedin.com/in/alex-bangiyev/">
-              <p className="white-text center">Alex Bangiyev</p>
+              <h6 className="white-text center">Alex Bangiyev</h6>
             </a>
             <a href="https://www.linkedin.com/in/soham-dutta-932550181/">
               {' '}
-              <p className="white-text center">Soham Dutta</p>
+              <h6 className="white-text center">Soham Dutta</h6>
             </a>
           </div>
         </div>

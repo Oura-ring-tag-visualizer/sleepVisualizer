@@ -56,6 +56,7 @@ export class NewDateForm extends React.Component {
 
           <label htmlFor="tagNames">Tag Names</label>
           <select
+            className="browser-default"
             type="text"
             value={this.state.tagNames}
             name="tagNames"

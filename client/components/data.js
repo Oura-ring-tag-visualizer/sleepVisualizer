@@ -90,59 +90,70 @@ class Data extends React.Component {
     }
 
     return (
-      <div className="chart">
-        <Line
-          data={chartData}
-          options={{
-            scales: {
-              yAxes: [
-                {
-                  scaleLabel: {
-                    display: true,
-                    labelString: 'Daily Rem Sleep Time (in Hours)',
-                    fontSize: 20
+      <div className="container">
+        <div className="chart">
+          <Line
+            data={chartData}
+            options={{
+              scales: {
+                yAxes: [
+                  {
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Daily Rem Sleep Time (in Hours)',
+                      fontSize: 20
+                    }
                   }
-                }
-              ],
-              xAxes: [
-                {
-                  scaleLabel: {
-                    display: true,
-                    labelString: 'Dates',
-                    fontSize: 20
+                ],
+                xAxes: [
+                  {
+                    scaleLabel: {
+                      display: true,
+                      labelString: 'Dates',
+                      fontSize: 20
+                    }
                   }
-                }
-              ]
-            },
-            title: {
-              text: 'REM Sleep Time by Tag',
-              fontSize: 25,
-              spanGaps: true
-            }
-          }}
-        />
-        <div>
-          <button
-            type="button"
-            onClick={event => this.props.fetchTagData('coffee')}
-          >
-            Coffee
-          </button>
-          <button
-            type="button"
-            onClick={event => this.props.fetchTagData('alcohol')}
-          >
-            Alcohol
-          </button>
-          <button
-            type="button"
-            onClick={event => this.props.fetchTagData('exercise')}
-          >
-            Exercise
-          </button>
+                ]
+              },
+              title: {
+                text: 'REM Sleep Time by Tag',
+                fontSize: 25,
+                spanGaps: true
+              }
+            }}
+          />
+          <div>
+            <div className="container center">
+              <button
+                className="waves-effect waves-dark btn grey"
+                type="button"
+                onClick={event => this.props.fetchTagData('coffee')}
+              >
+                Coffee
+              </button>
+
+              <button
+                className="waves-effect waves-dark btn grey"
+                type="button"
+                onClick={event => this.props.fetchTagData('alcohol')}
+              >
+                Alcohol
+              </button>
+              <button
+                className="waves-effect waves-dark btn grey"
+                type="button"
+                onClick={event => this.props.fetchTagData('exercise')}
+              >
+                Exercise
+              </button>
+            </div>
+          </div>
+          <h6 className="white-text center"> New Data</h6>
+          <NewDateForm {...this.props} />
+          <h6 className="white-text center"> Update Data</h6>
+
+          <UpdateDateForm {...this.props} />
         </div>
-        <NewDateForm {...this.props} />
-        <UpdateDateForm {...this.props} />
       </div>
     )
   }
