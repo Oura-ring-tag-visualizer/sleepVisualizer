@@ -44,6 +44,11 @@ class Data extends React.Component {
       datesOnly.length
     )
 
+    const last31RemDatesOnly = remOnly.slice(
+      datesOnly.length - 31,
+      datesOnly.length
+    )
+
     const tagRemSleepHorizontalLine = Array(last31DatesOnly.length).fill(
       tagRemSleepTimeAvg
     )
@@ -53,7 +58,7 @@ class Data extends React.Component {
       datasets: [
         {
           label: ['Rem sleep time'],
-          data: remOnly,
+          data: last31RemDatesOnly,
           backgroundColor: [
             'rgba(255, 99, 132, 0.6)',
             'rgba(54, 162, 235, 0.6)',
