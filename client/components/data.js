@@ -80,7 +80,7 @@ class Data extends React.Component {
     }
 
     return (
-      <div className="container">
+      <div height="70%" width="50%">
         <div className="chart">
           <Line
             data={chartData}
@@ -95,7 +95,6 @@ class Data extends React.Component {
                   {
                     scaleLabel: {
                       display: true,
-                      labelString: 'Daily Rem Sleep Time (in Hours)',
                       fontSize: 20,
                       fontColor: 'rgb(195, 190, 204)'
                     }
@@ -105,7 +104,6 @@ class Data extends React.Component {
                   {
                     scaleLabel: {
                       display: true,
-                      labelString: 'Dates',
                       fontSize: 20,
                       fontColor: 'rgb(195, 190, 204)'
                     }
@@ -120,49 +118,49 @@ class Data extends React.Component {
               }
             }}
           />
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          &nbsp; &nbsp;
-          <hr className="white" />
-          <h6 className="center white-text">Tags</h6>
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          &nbsp; &nbsp;
-          <div>
-            <div className="container center">
-              <button
-                className="waves-effect waves-dark btn grey"
-                type="button"
-                onClick={event => this.props.fetchTagData('coffee')}
-              >
-                Coffee
-              </button>
+        </div>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp;
+        <hr className="white" />
+        <h6 className="center white-text">Tags</h6>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp;
+        <div>
+          <div className="container center">
+            <button
+              className="waves-effect waves-dark btn grey"
+              type="button"
+              onClick={event => this.props.fetchTagData('coffee')}
+            >
+              Coffee
+            </button>
 
-              <button
-                className="waves-effect waves-dark btn grey"
-                type="button"
-                onClick={event => this.props.fetchTagData('alcohol')}
-              >
-                Alcohol
-              </button>
-              <button
-                className="waves-effect waves-dark btn grey"
-                type="button"
-                onClick={event => this.props.fetchTagData('exercise')}
-              >
-                Exercise
-              </button>
-            </div>
+            <button
+              className="waves-effect waves-dark btn grey"
+              type="button"
+              onClick={event => this.props.fetchTagData('alcohol')}
+            >
+              Alcohol
+            </button>
+            <button
+              className="waves-effect waves-dark btn grey"
+              type="button"
+              onClick={event => this.props.fetchTagData('exercise')}
+            >
+              Exercise
+            </button>
           </div>
+        </div>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp;
+        <hr className="white" />
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp;
+        <div className="offset m-3">
+          <NewDateForm {...this.props} />
           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
           &nbsp; &nbsp;
-          <hr className="white" />
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          &nbsp; &nbsp;
-          <div className="offset m-3">
-            <NewDateForm {...this.props} />
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp;
-            <UpdateDateForm {...this.props} />
-          </div>
+          <UpdateDateForm {...this.props} />
         </div>
       </div>
     )
