@@ -39,12 +39,17 @@ class Data extends React.Component {
 
     const tagRemSleepTimeAvg = tagRemSleepTimeSum / tagRemSleepTimeArray.length
 
-    const tagRemSleepHorizontalLine = Array(datesOnly.length).fill(
+    const last31DatesOnly = datesOnly.slice(
+      datesOnly.length - 31,
+      datesOnly.length
+    )
+
+    const tagRemSleepHorizontalLine = Array(last31DatesOnly.length).fill(
       tagRemSleepTimeAvg
     )
 
     const chartData = {
-      labels: datesOnly,
+      labels: last31DatesOnly,
       datasets: [
         {
           label: ['Rem sleep time'],
