@@ -4,6 +4,7 @@ import axios from 'axios'
 const GET_DATES = 'GET_DATES'
 const GET_TAGS = 'GET_TAGS'
 const CREATE_DATE = 'CREATE_DATE'
+const UPDATE_DATE = 'UPDATE_DATE'
 
 // ACTION CREATORS
 
@@ -19,6 +20,11 @@ const getTags = tags => ({
 
 const createDate = date => ({
   type: CREATE_DATE,
+  date
+})
+
+const updateDate = date => ({
+  type: UPDATE_DATE,
   date
 })
 
@@ -56,6 +62,17 @@ export const createNewDate = newDate => {
   }
 }
 
+export const updateExistingDate = dateToUpdate => {
+  return async dispatch => {
+    try {
+      const {data} = await axios.put(`/api/tags`, dateToUpdate)
+      dispatch(updateDate(data))
+    } catch (error) {
+      console.log('ERROR IN UPDATEEXISTINGDATE THUNK')
+    }
+  }
+}
+
 const initialState = {
   tags: [],
   dates: []
@@ -71,6 +88,8 @@ export default function tagReducer(state = initialState, action) {
       return {...state, dates: action.dates}
     case CREATE_DATE:
       return {...state, dates: [state.dates, action.date]}
+    case UPDATE_DATE:
+      return {...state, tags: [state.tags, action.date]}
     default:
       return state
   }
