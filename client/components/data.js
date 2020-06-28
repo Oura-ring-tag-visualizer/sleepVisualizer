@@ -75,7 +75,7 @@ class Data extends React.Component {
         },
 
         {
-          label: ['Tag'],
+          label: ['Rem Sleep Time for Current Tag (in Hours)'],
           data: tagRemSleepHorizontalLine,
           borderColor: [
             'rgba(75,192,192,1)',
@@ -94,8 +94,27 @@ class Data extends React.Component {
         <Line
           data={chartData}
           options={{
+            scales: {
+              yAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Daily Rem Sleep Time (in Hours)',
+                    fontSize: 20
+                  }
+                }
+              ],
+              xAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Dates',
+                    fontSize: 20
+                  }
+                }
+              ]
+            },
             title: {
-              display: this.props.displayTitle,
               text: 'REM Sleep Time by Tag',
               fontSize: 25,
               spanGaps: true
