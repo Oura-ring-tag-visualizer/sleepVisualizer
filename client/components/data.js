@@ -37,18 +37,32 @@ class Data extends React.Component {
 
     const tagRemSleepTimeSum = tagRemSleepTimeArray.reduce((a, b) => a + b, 0)
 
-    const tagRemSleepTimeAvg = tagRemSleepTimeSum / tagRemSleepTimeArray.length
+    const tagRemSleepTimeAvg =
+      Math.round(
+        tagRemSleepTimeSum / tagRemSleepTimeArray.length / 60 / 60 * 10
+      ) / 10
 
-    const tagRemSleepHorizontalLine = Array(datesOnly.length).fill(
+    const last31DatesOnly = datesOnly.slice(
+      datesOnly.length - 31,
+      datesOnly.length
+    )
+
+    const last31RemDatesOnly = remOnly
+      .slice(datesOnly.length - 31, datesOnly.length)
+      .map(remData => {
+        return Math.round(remData / 60 / 60 * 10) / 10
+      })
+
+    const tagRemSleepHorizontalLine = Array(last31DatesOnly.length).fill(
       tagRemSleepTimeAvg
     )
 
     const chartData = {
-      labels: datesOnly,
+      labels: last31DatesOnly,
       datasets: [
         {
-          label: ['Rem sleep time'],
-          data: remOnly,
+          label: ['Rem Sleep Time (in Hours)'],
+          data: last31RemDatesOnly,
           backgroundColor: [
             'rgba(255, 99, 132, 0.6)',
             'rgba(54, 162, 235, 0.6)',
@@ -61,7 +75,7 @@ class Data extends React.Component {
         },
 
         {
-          label: ['Tag'],
+          label: ['Rem Sleep Time for Current Tag (in Hours)'],
           data: tagRemSleepHorizontalLine,
           borderColor: [
             'rgba(75,192,192,1)',
@@ -80,8 +94,27 @@ class Data extends React.Component {
         <Line
           data={chartData}
           options={{
+            scales: {
+              yAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Daily Rem Sleep Time (in Hours)',
+                    fontSize: 20
+                  }
+                }
+              ],
+              xAxes: [
+                {
+                  scaleLabel: {
+                    display: true,
+                    labelString: 'Dates',
+                    fontSize: 20
+                  }
+                }
+              ]
+            },
             title: {
-              display: this.props.displayTitle,
               text: 'REM Sleep Time by Tag',
               fontSize: 25,
               spanGaps: true
