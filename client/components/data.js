@@ -65,14 +65,16 @@ class Data extends React.Component {
         {
           label: ['Rem Sleep Time (in Hours)'],
           data: last31RemDatesOnly,
-          backgroundColor: ['rgb(195, 190, 204)']
+          backgroundColor: ['rgb(195, 190, 204)'],
+          fontColor: 'rgb(195, 190, 204)'
         },
 
         {
           label: ['Rem Sleep Time for Current Tag (in Hours)'],
           data: tagRemSleepHorizontalLine,
           borderColor: ['rgb(179, 255, 0)'],
-          borderWidth: 6
+          borderWidth: 6,
+          fontColor: 'rgb(195, 190, 204)'
         }
       ]
     }
@@ -94,7 +96,8 @@ class Data extends React.Component {
                     scaleLabel: {
                       display: true,
                       labelString: 'Daily Rem Sleep Time (in Hours)',
-                      fontSize: 20
+                      fontSize: 20,
+                      fontColor: 'rgb(195, 190, 204)'
                     }
                   }
                 ],
@@ -103,7 +106,8 @@ class Data extends React.Component {
                     scaleLabel: {
                       display: true,
                       labelString: 'Dates',
-                      fontSize: 20
+                      fontSize: 20,
+                      fontColor: 'rgb(195, 190, 204)'
                     }
                   }
                 ]
@@ -112,13 +116,14 @@ class Data extends React.Component {
                 text: 'REM Sleep Time by Tag',
                 fontSize: 25,
                 spanGaps: true,
-                fontColor: ['white']
+                fontColor: 'rgb(195, 190, 204)'
               }
             }}
           />
           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
           &nbsp; &nbsp;
           <hr className="white" />
+          <h6 className="center white-text">Tags</h6>
           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
           &nbsp; &nbsp;
           <div>
