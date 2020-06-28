@@ -9,6 +9,8 @@ import {
 import {Line} from 'react-chartjs-2'
 import {NewDateForm} from './new-date-form'
 import {UpdateDateForm} from './update-date-form'
+import {Container, Row, Col, Button} from 'react-bootstrap'
+import {element} from 'prop-types'
 
 class Data extends React.Component {
   componentDidMount = () => {
@@ -63,28 +65,14 @@ class Data extends React.Component {
         {
           label: ['Rem Sleep Time (in Hours)'],
           data: last31RemDatesOnly,
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.6)',
-            'rgba(54, 162, 235, 0.6)',
-            'rgba(255, 206, 86, 0.6)',
-            'rgba(75, 192, 192, 0.6)',
-            'rgba(153, 102, 255, 0.6)',
-            'rgba(255, 159, 64, 0.6)',
-            'rgba(255, 99, 132, 0.6)'
-          ]
+          backgroundColor: ['rgb(195, 190, 204)']
         },
 
         {
           label: ['Rem Sleep Time for Current Tag (in Hours)'],
           data: tagRemSleepHorizontalLine,
-          borderColor: [
-            'rgba(75,192,192,1)',
-            'rgba(75,192,192,1)',
-            'rgba(75,192,192,1)',
-            'rgba(75,192,192,1)',
-            'rgba(75,192,192,1)',
-            'rgba(75,192,192,1)'
-          ]
+          borderColor: ['rgb(179, 255, 0)'],
+          borderWidth: 6
         }
       ]
     }
@@ -95,6 +83,11 @@ class Data extends React.Component {
           <Line
             data={chartData}
             options={{
+              elements: {
+                point: {
+                  radius: 0
+                }
+              },
               scales: {
                 yAxes: [
                   {
@@ -118,10 +111,16 @@ class Data extends React.Component {
               title: {
                 text: 'REM Sleep Time by Tag',
                 fontSize: 25,
-                spanGaps: true
+                spanGaps: true,
+                fontColor: ['white']
               }
             }}
           />
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp; &nbsp;
+          <hr className="white" />
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp; &nbsp;
           <div>
             <div className="container center">
               <button
@@ -148,11 +147,17 @@ class Data extends React.Component {
               </button>
             </div>
           </div>
-          <h6 className="white-text center"> New Data</h6>
-          <NewDateForm {...this.props} />
-          <h6 className="white-text center"> Update Data</h6>
-
-          <UpdateDateForm {...this.props} />
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp; &nbsp;
+          <hr className="white" />
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp; &nbsp;
+          <div className="offset m-3">
+            <NewDateForm {...this.props} />
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp;
+            <UpdateDateForm {...this.props} />
+          </div>
         </div>
       </div>
     )

@@ -32,11 +32,16 @@ export class NewDateForm extends React.Component {
     const tagNames = this.state.tagNames
     // console.log('props: ', this.props)
     return (
-      <div>
+      <div className="container">
+        <h6 className="white-text center"> New Data</h6>
+
         <form onSubmit={this.handleSubmit}>
           <h3>New Date</h3>
-          <label htmlFor="date">Date</label>
+          <label className="white-text" htmlFor="date">
+            Date
+          </label>
           <input
+            className="white-text"
             type="date"
             value={this.state.date}
             name="date"
@@ -44,8 +49,11 @@ export class NewDateForm extends React.Component {
             onChange={this.handleChange}
           />
 
-          <label htmlFor="remSleepTime">Rem Sleep Time (in seconds)</label>
+          <label className="white-text" htmlFor="remSleepTime">
+            Rem Sleep Time (in seconds)
+          </label>
           <input
+            className="white-text"
             type="text"
             value={this.state.remSleepTime}
             name="remSleepTime"
@@ -54,7 +62,9 @@ export class NewDateForm extends React.Component {
           />
           <br />
 
-          <label htmlFor="tagNames">Tag Names</label>
+          <label className="white-text" htmlFor="tagNames">
+            Tag Names
+          </label>
           <select
             className="browser-default"
             type="text"
