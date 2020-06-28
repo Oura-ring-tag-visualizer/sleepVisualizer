@@ -33,6 +33,7 @@ export class NewDateForm extends React.Component {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
+          <h3>New Date</h3>
           <label htmlFor="date">Date</label>
           <input
             type="date"
@@ -50,6 +51,7 @@ export class NewDateForm extends React.Component {
             placeholder="enter rem sleep time"
             onChange={this.handleChange}
           />
+          <br />
 
           <label htmlFor="tagNames">Tag Names</label>
           <select
@@ -58,10 +60,21 @@ export class NewDateForm extends React.Component {
             name="tagNames"
             onChange={this.handleChange}
           >
+            <option value="" />
             <option value="coffee">Coffee</option>
             <option value="alcohol">Alcohol</option>
             <option value="exercise">Exercise</option>
           </select>
+          {/* <div
+            type="text"
+            value={this.state.tagNames}
+            name="tagNames"
+            onChange={this.handleChange}
+          >
+            <input type="checkbox" name="tagNames" value='coffee' onChange={this.handleChange} />Coffee<br />
+            <input type="checkbox" name="tagNames" value='alcohol' onChange={this.handleChange} />Alcohol<br />
+            <input type="checkbox" name="tagNames" value='exercise' onChange={this.handleChange} />Exercise<br />
+          </div> */}
 
           <button
             // disable={

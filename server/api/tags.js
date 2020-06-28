@@ -40,22 +40,27 @@ router.post('/', async (req, res, next) => {
   }
 })
 
-// router.get('/:tagName', async (req, res, next) => {
-//   try {
-//     const dates = await Tags.findAll({
-//       where: {
-//         tagNames: {
-//           [Op.contains]: [req.params.tagName]
-//         },
-//         attributes: [
-//           'remSleepTime',
-//           [sequelize.fn('AVG', sequelize.col('average')), 'avg']
-//         ]
-//       }
-//     })
-//     console.log(dates)
-//     res.json(dates)
-//   } catch (err) {
-//     next(err)
-//   }
-// })
+router.put('/', async (req, res, next) => {
+  try {
+    const findTagArrayToUpdate = await Tags.findOne({
+      where: {
+        date: req.body.date
+      }
+    })
+    console.log('hello', findTagArrayToUpdate)
+    const updateDate = await Tags.update(
+      {
+        tagNames: [...findTagArrayToUpdate.tagNames, ...req.body.tagNames],
+        remSleepTime: req.body.remSleepTime
+      },
+      {
+        where: {
+          date: req.body.date
+        }
+      }
+    )
+    res.status(201).json(updateDate)
+  } catch (error) {
+    next(error)
+  }
+})
