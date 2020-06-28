@@ -11,6 +11,7 @@ import {NewDateForm} from './new-date-form'
 import {UpdateDateForm} from './update-date-form'
 import {Container, Row, Col, Button} from 'react-bootstrap'
 import {element} from 'prop-types'
+import {AnimatePresence, motion} from 'framer-motion'
 
 class Data extends React.Component {
   componentDidMount = () => {
@@ -79,8 +80,40 @@ class Data extends React.Component {
       ]
     }
 
+    const pageVariants = {
+      initial: {
+        opacity: 0,
+        x: '-100vw',
+        scale: 0.8
+      },
+      in: {
+        opacity: 1,
+        x: 0,
+        scale: 1
+      },
+      out: {
+        opacity: 0,
+        x: '-100vw',
+        scale: 1.2
+      }
+    }
+
+    const pageTransition = {
+      type: 'tween',
+      ease: 'anticipate',
+      duration: 1
+    }
+
     return (
-      <div height="70%" width="50%">
+      <motion.div
+        initial="initial"
+        animate="in"
+        exit="out"
+        variants={pageVariants}
+        transition={pageTransition}
+        height="70%"
+        width="50%"
+      >
         <div className="chart">
           <Line
             data={chartData}
@@ -162,7 +195,7 @@ class Data extends React.Component {
           &nbsp; &nbsp;
           <UpdateDateForm {...this.props} />
         </div>
-      </div>
+      </motion.div>
     )
   }
 }
