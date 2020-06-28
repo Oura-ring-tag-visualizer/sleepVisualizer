@@ -37,17 +37,21 @@ class Data extends React.Component {
 
     const tagRemSleepTimeSum = tagRemSleepTimeArray.reduce((a, b) => a + b, 0)
 
-    const tagRemSleepTimeAvg = tagRemSleepTimeSum / tagRemSleepTimeArray.length
+    const tagRemSleepTimeAvg =
+      Math.round(
+        tagRemSleepTimeSum / tagRemSleepTimeArray.length / 60 / 60 * 10
+      ) / 10
 
     const last31DatesOnly = datesOnly.slice(
       datesOnly.length - 31,
       datesOnly.length
     )
 
-    const last31RemDatesOnly = remOnly.slice(
-      datesOnly.length - 31,
-      datesOnly.length
-    )
+    const last31RemDatesOnly = remOnly
+      .slice(datesOnly.length - 31, datesOnly.length)
+      .map(remData => {
+        return Math.round(remData / 60 / 60 * 10) / 10
+      })
 
     const tagRemSleepHorizontalLine = Array(last31DatesOnly.length).fill(
       tagRemSleepTimeAvg
@@ -57,7 +61,7 @@ class Data extends React.Component {
       labels: last31DatesOnly,
       datasets: [
         {
-          label: ['Rem sleep time'],
+          label: ['Rem Sleep Time (in Hours)'],
           data: last31RemDatesOnly,
           backgroundColor: [
             'rgba(255, 99, 132, 0.6)',
