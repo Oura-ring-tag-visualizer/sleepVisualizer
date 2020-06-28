@@ -1,8 +1,14 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchAllDates, fetchTag, createNewDate} from '../store/tags'
+import {
+  fetchAllDates,
+  fetchTag,
+  createNewDate,
+  updateExistingDate
+} from '../store/tags'
 import {Line} from 'react-chartjs-2'
 import {NewDateForm} from './new-date-form'
+import {UpdateDateForm} from './update-date-form'
 
 class Data extends React.Component {
   componentDidMount = () => {
@@ -103,6 +109,7 @@ class Data extends React.Component {
           </button>
         </div>
         <NewDateForm {...this.props} />
+        <UpdateDateForm {...this.props} />
       </div>
     )
   }
@@ -116,7 +123,8 @@ const mapStatetoProps = state => ({
 const mapDispatchToProps = dispatch => ({
   fetchDates: () => dispatch(fetchAllDates()),
   fetchTagData: tagName => dispatch(fetchTag(tagName)),
-  createNewDate: newDate => dispatch(createNewDate(newDate))
+  createNewDate: newDate => dispatch(createNewDate(newDate)),
+  updateExistingDate: dateToUpdate => dispatch(updateExistingDate(dateToUpdate))
 })
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Data)

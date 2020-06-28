@@ -1,6 +1,6 @@
 import React from 'react'
 
-export class NewDateForm extends React.Component {
+export class UpdateDateForm extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -16,7 +16,7 @@ export class NewDateForm extends React.Component {
     dateForm.date = this.state.date
     dateForm.tagNames = [this.state.tagNames]
     dateForm.remSleepTime = this.state.remSleepTime
-    this.props.createNewDate(dateForm)
+    this.props.updateExistingDate(dateForm)
     this.setState({
       date: '',
       tagNames: [],
@@ -30,11 +30,11 @@ export class NewDateForm extends React.Component {
 
   render() {
     const tagNames = this.state.tagNames
-    // console.log('props: ', this.props)
+    console.log('props: ', this.props)
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <h3>New Date</h3>
+          <h3>Update Date</h3>
           <label htmlFor="date">Date</label>
           <input
             type="date"
@@ -66,27 +66,8 @@ export class NewDateForm extends React.Component {
             <option value="alcohol">Alcohol</option>
             <option value="exercise">Exercise</option>
           </select>
-          {/* <div
-            type="text"
-            value={this.state.tagNames}
-            name="tagNames"
-            onChange={this.handleChange}
-          >
-            <input type="checkbox" name="tagNames" value='coffee' onChange={this.handleChange} />Coffee<br />
-            <input type="checkbox" name="tagNames" value='alcohol' onChange={this.handleChange} />Alcohol<br />
-            <input type="checkbox" name="tagNames" value='exercise' onChange={this.handleChange} />Exercise<br />
-          </div> */}
 
-          <button
-            // disable={
-            //   !this.state.date &&
-            //   !this.state.tagNames &&
-            //   !this.state.remSleepTime
-            // }
-            type="submit"
-          >
-            Submit
-          </button>
+          <button type="submit">Submit</button>
         </form>
       </div>
     )
