@@ -4,11 +4,16 @@ import {
   fetchAllDates,
   fetchTag,
   createNewDate,
-  updateExistingDate
+  updateExistingDate,
+  deleteExistingDate
 } from '../store/tags'
 import {Line} from 'react-chartjs-2'
 import {NewDateForm} from './new-date-form'
 import {UpdateDateForm} from './update-date-form'
+import {Container, Row, Col, Button} from 'react-bootstrap'
+import {element} from 'prop-types'
+import {AnimatePresence, motion} from 'framer-motion'
+import {DeleteDateForm} from './delete-date-form'
 
 class Data extends React.Component {
   componentDidMount = () => {
@@ -63,45 +68,70 @@ class Data extends React.Component {
         {
           label: ['Rem Sleep Time (in Hours)'],
           data: last31RemDatesOnly,
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.6)',
-            'rgba(54, 162, 235, 0.6)',
-            'rgba(255, 206, 86, 0.6)',
-            'rgba(75, 192, 192, 0.6)',
-            'rgba(153, 102, 255, 0.6)',
-            'rgba(255, 159, 64, 0.6)',
-            'rgba(255, 99, 132, 0.6)'
-          ]
+          backgroundColor: ['rgb(195, 190, 204)'],
+          fontColor: 'rgb(195, 190, 204)'
         },
 
         {
           label: ['Rem Sleep Time for Current Tag (in Hours)'],
           data: tagRemSleepHorizontalLine,
-          borderColor: [
-            'rgba(75,192,192,1)',
-            'rgba(75,192,192,1)',
-            'rgba(75,192,192,1)',
-            'rgba(75,192,192,1)',
-            'rgba(75,192,192,1)',
-            'rgba(75,192,192,1)'
-          ]
+          borderColor: ['rgb(179, 255, 0)'],
+          borderWidth: 6,
+          fontColor: 'rgb(195, 190, 204)'
         }
       ]
     }
 
+    const pageVariants = {
+      initial: {
+        opacity: 0,
+        x: '-100vw',
+        scale: 0.8
+      },
+      in: {
+        opacity: 1,
+        x: 0,
+        scale: 1
+      },
+      out: {
+        opacity: 0,
+        x: '-100vw',
+        scale: 1.2
+      }
+    }
+
+    const pageTransition = {
+      type: 'tween',
+      ease: 'anticipate',
+      duration: 1
+    }
+
     return (
-      <div className="container">
+      <motion.div
+        initial="initial"
+        animate="in"
+        exit="out"
+        variants={pageVariants}
+        transition={pageTransition}
+        height="70%"
+        width="50%"
+      >
         <div className="chart">
           <Line
             data={chartData}
             options={{
+              elements: {
+                point: {
+                  radius: 0
+                }
+              },
               scales: {
                 yAxes: [
                   {
                     scaleLabel: {
                       display: true,
-                      labelString: 'Daily Rem Sleep Time (in Hours)',
-                      fontSize: 20
+                      fontSize: 20,
+                      fontColor: 'rgb(195, 190, 204)'
                     }
                   }
                 ],
@@ -109,8 +139,8 @@ class Data extends React.Component {
                   {
                     scaleLabel: {
                       display: true,
-                      labelString: 'Dates',
-                      fontSize: 20
+                      fontSize: 20,
+                      fontColor: 'rgb(195, 190, 204)'
                     }
                   }
                 ]
@@ -118,43 +148,67 @@ class Data extends React.Component {
               title: {
                 text: 'REM Sleep Time by Tag',
                 fontSize: 25,
-                spanGaps: true
+                spanGaps: true,
+                fontColor: 'rgb(195, 190, 204)'
               }
             }}
           />
-          <div>
-            <div className="container center">
-              <button
-                className="waves-effect waves-dark btn grey"
-                type="button"
-                onClick={event => this.props.fetchTagData('coffee')}
-              >
-                Coffee
-              </button>
-
-              <button
-                className="waves-effect waves-dark btn grey"
-                type="button"
-                onClick={event => this.props.fetchTagData('alcohol')}
-              >
-                Alcohol
-              </button>
-              <button
-                className="waves-effect waves-dark btn grey"
-                type="button"
-                onClick={event => this.props.fetchTagData('exercise')}
-              >
-                Exercise
-              </button>
-            </div>
-          </div>
-          <h6 className="white-text center"> New Data</h6>
-          <NewDateForm {...this.props} />
-          <h6 className="white-text center"> Update Data</h6>
-
-          <UpdateDateForm {...this.props} />
         </div>
-      </div>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp;
+        <hr className="white" />
+        <h6 className="center white-text">Tags</h6>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp;
+        <div>
+          <div className="container center">
+            <button
+              className="waves-effect waves-dark btn grey"
+              type="button"
+              onClick={event => this.props.fetchTagData('caffeine')}
+            >
+              Caffeine
+            </button>
+
+            <button
+              className="waves-effect waves-dark btn grey"
+              type="button"
+              onClick={event => this.props.fetchTagData('alcohol')}
+            >
+              Alcohol
+            </button>
+            <button
+              className="waves-effect waves-dark btn grey"
+              type="button"
+              onClick={event => this.props.fetchTagData('exercise')}
+            >
+              Exercise
+            </button>
+          </div>
+        </div>
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp;
+        <hr className="white" />
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp;
+        <div>
+          <Row className="justify-content-md-center">
+            <div className="col s3 m3">
+              <NewDateForm {...this.props} />
+            </div>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp;
+            <div className="col s3 m3">
+              <UpdateDateForm {...this.props} />
+            </div>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp;
+            <div className="col s3 m3">
+              <DeleteDateForm {...this.props} />
+            </div>
+          </Row>
+        </div>
+      </motion.div>
     )
   }
 }
@@ -168,7 +222,9 @@ const mapDispatchToProps = dispatch => ({
   fetchDates: () => dispatch(fetchAllDates()),
   fetchTagData: tagName => dispatch(fetchTag(tagName)),
   createNewDate: newDate => dispatch(createNewDate(newDate)),
-  updateExistingDate: dateToUpdate => dispatch(updateExistingDate(dateToUpdate))
+  updateExistingDate: dateToUpdate =>
+    dispatch(updateExistingDate(dateToUpdate)),
+  deleteExistingDate: dateToDelete => dispatch(deleteExistingDate(dateToDelete))
 })
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Data)

@@ -4,7 +4,7 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Home, Data} from './components'
 import {me} from './store'
-
+import {AnimatePresence, motion} from 'framer-motion'
 /**
  * COMPONENT
  */
@@ -15,11 +15,12 @@ class Routes extends Component {
 
   render() {
     return (
-      <Switch>
-        {/* Routes placed here are available to all visitors */}
-        <Route path="/home" component={Home} />
-        <Route path="/data" component={Data} />
-      </Switch>
+      <AnimatePresence>
+        <Switch>
+          <Route path="/home" component={Home} />
+          <Route path="/data" component={Data} />
+        </Switch>
+      </AnimatePresence>
     )
   }
 }
