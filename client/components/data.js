@@ -77,7 +77,8 @@ class Data extends React.Component {
           data: tagRemSleepHorizontalLine,
           borderColor: ['rgb(179, 255, 0)'],
           borderWidth: 6,
-          fontColor: 'rgb(195, 190, 204)'
+          fontColor: 'rgb(195, 190, 204)',
+          backgroundColor: ['rgb(179, 255, 0)']
         }
       ]
     }
@@ -116,97 +117,100 @@ class Data extends React.Component {
         height="70%"
         width="50%"
       >
-        <div className="chart">
-          <Line
-            data={chartData}
-            options={{
-              elements: {
-                point: {
-                  radius: 0
+        <div className="container center">
+          <div className="chart">
+            <Line
+              data={chartData}
+              options={{
+                elements: {
+                  point: {
+                    radius: 3,
+                    backgroundColor: 'rgb(179, 255, 0)'
+                  }
+                },
+                scales: {
+                  yAxes: [
+                    {
+                      scaleLabel: {
+                        display: true,
+                        fontSize: 20,
+                        fontColor: 'rgb(195, 190, 204)'
+                      }
+                    }
+                  ],
+                  xAxes: [
+                    {
+                      scaleLabel: {
+                        display: true,
+                        fontSize: 20,
+                        fontColor: 'rgb(195, 190, 204)'
+                      }
+                    }
+                  ]
+                },
+                title: {
+                  text: 'REM Sleep Time by Tag',
+                  fontSize: 25,
+                  spanGaps: true,
+                  fontColor: 'rgb(195, 190, 204)'
                 }
-              },
-              scales: {
-                yAxes: [
-                  {
-                    scaleLabel: {
-                      display: true,
-                      fontSize: 20,
-                      fontColor: 'rgb(195, 190, 204)'
-                    }
-                  }
-                ],
-                xAxes: [
-                  {
-                    scaleLabel: {
-                      display: true,
-                      fontSize: 20,
-                      fontColor: 'rgb(195, 190, 204)'
-                    }
-                  }
-                ]
-              },
-              title: {
-                text: 'REM Sleep Time by Tag',
-                fontSize: 25,
-                spanGaps: true,
-                fontColor: 'rgb(195, 190, 204)'
-              }
-            }}
-          />
-        </div>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        &nbsp; &nbsp;
-        <hr className="white" />
-        <h6 className="center white-text">Tags</h6>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        &nbsp; &nbsp;
-        <div>
-          <div className="container center">
-            <button
-              className="waves-effect waves-dark btn grey"
-              type="button"
-              onClick={event => this.props.fetchTagData('caffeine')}
-            >
-              Caffeine
-            </button>
-
-            <button
-              className="waves-effect waves-dark btn grey"
-              type="button"
-              onClick={event => this.props.fetchTagData('alcohol')}
-            >
-              Alcohol
-            </button>
-            <button
-              className="waves-effect waves-dark btn grey"
-              type="button"
-              onClick={event => this.props.fetchTagData('exercise')}
-            >
-              Exercise
-            </button>
+              }}
+            />
           </div>
-        </div>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        &nbsp; &nbsp;
-        <hr className="white" />
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-        &nbsp; &nbsp;
-        <div>
-          <Row className="justify-content-md-center">
-            <div className="col s3 m3">
-              <NewDateForm {...this.props} />
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp; &nbsp;
+          <hr className="white" />
+          <h6 className="center white-text">Tags</h6>
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp; &nbsp;
+          <div>
+            <div className="container center">
+              <button
+                className="waves-effect waves-dark btn grey"
+                type="button"
+                onClick={event => this.props.fetchTagData('caffeine')}
+              >
+                Caffeine
+              </button>
+
+              <button
+                className="waves-effect waves-dark btn grey"
+                type="button"
+                onClick={event => this.props.fetchTagData('alcohol')}
+              >
+                Alcohol
+              </button>
+              <button
+                className="waves-effect waves-dark btn grey"
+                type="button"
+                onClick={event => this.props.fetchTagData('exercise')}
+              >
+                Exercise
+              </button>
             </div>
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp;
-            <div className="col s3 m3">
-              <UpdateDateForm {...this.props} />
-            </div>
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp;
-            <div className="col s3 m3">
-              <DeleteDateForm {...this.props} />
-            </div>
-          </Row>
+          </div>
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp; &nbsp;
+          <hr className="white" />
+          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+          &nbsp; &nbsp;
+          <div>
+            <Row className="justify-content-md-center">
+              <div className="col s3 m3">
+                <NewDateForm {...this.props} />
+              </div>
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              &nbsp; &nbsp; &nbsp;
+              <div className="col s3 m3">
+                <UpdateDateForm {...this.props} />
+              </div>
+              &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+              &nbsp; &nbsp; &nbsp;
+              <div className="col s3 m3">
+                <DeleteDateForm {...this.props} />
+              </div>
+            </Row>
+          </div>
         </div>
       </motion.div>
     )
