@@ -17,7 +17,7 @@ class Routes extends Component {
     return (
       <AnimatePresence>
         <Switch>
-          <Route path="/" component={Home} />
+          <Route exact path="/" component={Home} />
           <Route path="/data" component={Data} />
         </Switch>
       </AnimatePresence>
