@@ -10,18 +10,19 @@ export class UpdateDateForm extends React.Component {
     }
   }
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault()
     let dateForm = {}
     dateForm.date = this.state.date
     dateForm.tagNames = [this.state.tagNames]
     dateForm.remSleepTime = this.state.remSleepTime
-    this.props.updateExistingDate(dateForm)
+    await this.props.updateExistingDate(dateForm)
     this.setState({
       date: '',
       tagNames: [],
       remSleepTime: 0
     })
+    this.props.fetchDates()
   }
 
   handleChange = event => {

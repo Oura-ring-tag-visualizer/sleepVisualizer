@@ -4,11 +4,13 @@ import {
   fetchAllDates,
   fetchTag,
   createNewDate,
-  updateExistingDate
+  updateExistingDate,
+  deleteExistingDate
 } from '../store/tags'
 import {Line} from 'react-chartjs-2'
 import {NewDateForm} from './new-date-form'
 import {UpdateDateForm} from './update-date-form'
+import {DeleteDateForm} from './delete-date-form'
 
 class Data extends React.Component {
   componentDidMount = () => {
@@ -148,11 +150,21 @@ class Data extends React.Component {
               </button>
             </div>
           </div>
-          <h6 className="white-text center"> New Data</h6>
-          <NewDateForm {...this.props} />
-          <h6 className="white-text center"> Update Data</h6>
 
-          <UpdateDateForm {...this.props} />
+          <div>
+            <h6 className="white-text center">New Data</h6>
+            <NewDateForm {...this.props} />
+          </div>
+
+          <div>
+            <h6 className="white-text center">Update Data</h6>
+            <UpdateDateForm {...this.props} />
+          </div>
+
+          <div>
+            <h6 className="white-text center">Delete Data</h6>
+            <DeleteDateForm {...this.props} />
+          </div>
         </div>
       </div>
     )
@@ -168,7 +180,9 @@ const mapDispatchToProps = dispatch => ({
   fetchDates: () => dispatch(fetchAllDates()),
   fetchTagData: tagName => dispatch(fetchTag(tagName)),
   createNewDate: newDate => dispatch(createNewDate(newDate)),
-  updateExistingDate: dateToUpdate => dispatch(updateExistingDate(dateToUpdate))
+  updateExistingDate: dateToUpdate =>
+    dispatch(updateExistingDate(dateToUpdate)),
+  deleteExistingDate: dateToDelete => dispatch(deleteExistingDate(dateToDelete))
 })
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Data)
