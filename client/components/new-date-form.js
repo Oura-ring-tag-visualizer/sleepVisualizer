@@ -32,9 +32,7 @@ export class NewDateForm extends React.Component {
     const tagNames = this.state.tagNames
     // console.log('props: ', this.props)
     return (
-      <div className="container">
-        <h6 className="white-text center"> New Data</h6>
-
+      <div className="card-container grey">
         <form onSubmit={this.handleSubmit}>
           <h3>New Date</h3>
           <label className="white-text" htmlFor="date">
@@ -73,7 +71,7 @@ export class NewDateForm extends React.Component {
             onChange={this.handleChange}
           >
             <option value="" />
-            <option value="coffee">Coffee</option>
+            <option value="caffeine">Caffeine</option>
             <option value="alcohol">Alcohol</option>
             <option value="exercise">Exercise</option>
           </select>
@@ -83,7 +81,7 @@ export class NewDateForm extends React.Component {
             name="tagNames"
             onChange={this.handleChange}
           >
-            <input type="checkbox" name="tagNames" value='coffee' onChange={this.handleChange} />Coffee<br />
+            <input type="checkbox" name="tagNames" value='caffeine' onChange={this.handleChange} />caffeine<br />
             <input type="checkbox" name="tagNames" value='alcohol' onChange={this.handleChange} />Alcohol<br />
             <input type="checkbox" name="tagNames" value='exercise' onChange={this.handleChange} />Exercise<br />
           </div> */}
@@ -94,6 +92,7 @@ export class NewDateForm extends React.Component {
             //   !this.state.tagNames &&
             //   !this.state.remSleepTime
             // }
+            className="waves-effect waves-dark btn grey"
             type="submit"
           >
             Submit

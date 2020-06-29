@@ -32,7 +32,7 @@ export class UpdateDateForm extends React.Component {
     const tagNames = this.state.tagNames
     console.log('props: ', this.props)
     return (
-      <div className="container">
+      <div className="card-container grey">
         <h6 className="white-text center"> Update Data</h6>
         <form onSubmit={this.handleSubmit}>
           <h3>Update Date</h3>
@@ -72,12 +72,14 @@ export class UpdateDateForm extends React.Component {
             onChange={this.handleChange}
           >
             <option value="" />
-            <option value="coffee">Coffee</option>
+            <option value="caffeine">Caffeine</option>
             <option value="alcohol">Alcohol</option>
             <option value="exercise">Exercise</option>
           </select>
 
-          <button type="submit">Submit</button>
+          <button className="waves-effect waves-dark btn grey" type="submit">
+            Submit
+          </button>
         </form>
       </div>
     )

@@ -163,9 +163,9 @@ class Data extends React.Component {
             <button
               className="waves-effect waves-dark btn grey"
               type="button"
-              onClick={event => this.props.fetchTagData('coffee')}
+              onClick={event => this.props.fetchTagData('caffeine')}
             >
-              Coffee
+              Caffeine
             </button>
 
             <button

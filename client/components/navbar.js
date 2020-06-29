@@ -11,16 +11,16 @@ const Navbar = ({handleClick, isLoggedIn}) => (
     <div className="navbar-fixed">
       <nav className="black">
         <div className="nav-wrapper">
-          <h4 href="/home" className="brand-logo center">
-            Sleep Visualizer
-          </h4>
           <ul className="left hide-on-med-and-down">
             <li className="tab">
               <a target="_self" href="/home">
                 Home
               </a>
             </li>
-            <li className="tab">
+            <h4 href="/home" className="brand-logo center ">
+              Sleep Visualizer
+            </h4>
+            <li className="tab topnav-right">
               <a target="_self" href="/data">
                 Data
               </a>
