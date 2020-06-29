@@ -5,6 +5,7 @@ const GET_DATES = 'GET_DATES'
 const GET_TAGS = 'GET_TAGS'
 const CREATE_DATE = 'CREATE_DATE'
 const UPDATE_DATE = 'UPDATE_DATE'
+const DELETE_DATE = 'DELETE_DATE'
 
 // ACTION CREATORS
 
@@ -25,6 +26,11 @@ const createDate = date => ({
 
 const updateDate = date => ({
   type: UPDATE_DATE,
+  date
+})
+
+const deleteDate = date => ({
+  type: DELETE_DATE,
   date
 })
 
@@ -73,6 +79,18 @@ export const updateExistingDate = dateToUpdate => {
   }
 }
 
+export const deleteExistingDate = dateToDelete => {
+  return async dispatch => {
+    try {
+      console.log(dateToDelete)
+      await axios.delete(`/api/tags/`, {data: dateToDelete})
+      dispatch(deleteDate(dateToDelete))
+    } catch (error) {
+      console.log('ERROR IN DELETEEXISTINGDATE THUNK', error)
+    }
+  }
+}
+
 const initialState = {
   tags: [],
   dates: []
@@ -90,6 +108,8 @@ export default function tagReducer(state = initialState, action) {
       return {...state, dates: [state.dates, action.date]}
     case UPDATE_DATE:
       return {...state, tags: [state.tags, action.date]}
+    case DELETE_DATE:
+      return state.dates.filter(date => date !== action.date)
     default:
       return state
   }

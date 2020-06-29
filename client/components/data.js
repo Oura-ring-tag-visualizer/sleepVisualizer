@@ -4,7 +4,8 @@ import {
   fetchAllDates,
   fetchTag,
   createNewDate,
-  updateExistingDate
+  updateExistingDate,
+  deleteExistingDate
 } from '../store/tags'
 import {Line} from 'react-chartjs-2'
 import {NewDateForm} from './new-date-form'
@@ -12,6 +13,7 @@ import {UpdateDateForm} from './update-date-form'
 import {Container, Row, Col, Button} from 'react-bootstrap'
 import {element} from 'prop-types'
 import {AnimatePresence, motion} from 'framer-motion'
+import {DeleteDateForm} from './delete-date-form'
 
 class Data extends React.Component {
   componentDidMount = () => {
@@ -189,11 +191,22 @@ class Data extends React.Component {
         <hr className="white" />
         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
         &nbsp; &nbsp;
-        <div className="offset m-3">
-          <NewDateForm {...this.props} />
-          &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          &nbsp; &nbsp;
-          <UpdateDateForm {...this.props} />
+        <div>
+          <Row className="justify-content-md-center">
+            <div className="col s3 m3">
+              <NewDateForm {...this.props} />
+            </div>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp;
+            <div className="col s3 m3">
+              <UpdateDateForm {...this.props} />
+            </div>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp;
+            <div className="col s3 m3">
+              <DeleteDateForm {...this.props} />
+            </div>
+          </Row>
         </div>
       </motion.div>
     )
@@ -209,7 +222,9 @@ const mapDispatchToProps = dispatch => ({
   fetchDates: () => dispatch(fetchAllDates()),
   fetchTagData: tagName => dispatch(fetchTag(tagName)),
   createNewDate: newDate => dispatch(createNewDate(newDate)),
-  updateExistingDate: dateToUpdate => dispatch(updateExistingDate(dateToUpdate))
+  updateExistingDate: dateToUpdate =>
+    dispatch(updateExistingDate(dateToUpdate)),
+  deleteExistingDate: dateToDelete => dispatch(deleteExistingDate(dateToDelete))
 })
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Data)

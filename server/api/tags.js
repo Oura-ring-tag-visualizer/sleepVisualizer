@@ -64,3 +64,17 @@ router.put('/', async (req, res, next) => {
     next(error)
   }
 })
+
+router.delete('/', async (req, res, next) => {
+  try {
+    console.log(req.body)
+    const dateToDelete = await Tags.destroy({
+      where: {
+        date: req.body.date
+      }
+    })
+    res.status(201).json(dateToDelete)
+  } catch (error) {
+    next(error)
+  }
+})
